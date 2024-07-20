@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            white-space: pre-wrap; /* İçeriğin formatını korur */
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetched Content</h1>
+    <button id="fetch-button">Fetch Content</button>
+    <div id="content">Content will be displayed here...</div>
+
+    <script>
+        document.getElementById('fetch-button').addEventListener('click', () => {
+            fetch('http://193.106.196.116:5000')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('content').textContent = data;
+                })
+                .catch(error => {
+                    document.getElementById('content').textContent = `Error: ${error.message}`;
+                });
+        });
+    </script>
+</body>
+</html>
