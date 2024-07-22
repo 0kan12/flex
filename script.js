@@ -75,7 +75,7 @@ function initAnimations() {
 }
 
 function updateData() {
-    fetch('https://api.mrpoorguy.fun')
+    fetch('https://api.rodev.store')
         .then(response => response.json())
         .then(data => {
             document.getElementById('funds').setAttribute('data-end', data.funds);
